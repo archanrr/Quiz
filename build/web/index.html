@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <form  method="POST" onsubmit="loginsubmit()">
+            UserName:<input type="text" name="name" id="name">
+            Password:<input type="password" name="password" id="password">
+            <input type="submit" value="submit">
+            <a href="register.html">Register</a>
+        </form>
+    </body>
+    <script>
+        function loginsubmit(){
+            event.preventDefault();
+            var username=document.getElementById('name').value;
+            var password=document.getElementById('password').value;
+            $.post("login.jsp",
+            {
+                username: username,
+                password: password
+            },
+            function(data,status){
+                if(data=="success"){
+                    alert("Login success")
+                }
+                else{
+                    alert("Failed");
+                }
+            });
+            
+        }
+    </script>
+      
+</html>

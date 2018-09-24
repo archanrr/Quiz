@@ -1,8 +1,22 @@
-<%@ page import ="java.sql.*"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%-- 
+    Document   : test
+    Created on : 25 Sep, 2018, 1:58:22 AM
+    Author     : ARCHAN
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+    </body>
+</html>
 <%
-    String name=request.getParameter("username");
-    String password= request.getParameter("password");
     Connection con;
     Statement st ;
     ResultSet rs;
@@ -10,14 +24,11 @@
     {       Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc","root","");
             st=con.createStatement();
-            String sql="Select *from userreg where username='"+name+"' and password='"+password+"'";
+            String sql="Select *from test";
             rs=st.executeQuery(sql);
             if(rs.next()){
                 out.print("success");
                 
-            String site = new String("http://localhost:8080/Quiz/Take Test.html");
-         response.setStatus(response.SC_MOVED_TEMPORARILY);
-         response.setHeader("Location", site);
             }
             else{
                 out.print("failed");
@@ -25,4 +36,4 @@
     }
     catch(Exception e){
     }
-%>
+    %>
